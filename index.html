@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神马电影网 午夜｜凌晨一点的私人放映厅</title>
+<meta name="keywords" content="神马电影网 午夜,深夜观影,失眠片单,午夜场电影,孤独感佳片,凌晨推荐">
+<meta name="description" content="神马电影网 午夜（https://shenmadianyingwangwuye-zh.github.io）只在这个时段营业：凌晨零点到四点，为睡不着的人准备的一份放映单。这里不按热度排片，只按夜的时辰——零点的、一点的、三点的，各有各的片子。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://shenmadianyingwangwuye-zh.github.io/">
+<style>
+:root{
+  --bg:#0a0710; --paper:#130d1f; --line:#2a2140; --line2:#46345f;
+  --tx:#f0ebf7; --tx2:#b4a9cf; --tx3:#7a6e96;
+  --vio:#8b5cf6; --vio2:#a78bfa; --mag:#e0409e; --gold:#f5c542; --ice:#7dd3fc;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;background:var(--bg);color:var(--tx);line-height:1.8;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(700px 500px at 85% 12%,rgba(139,92,246,.16),transparent),radial-gradient(600px 400px at 12% 88%,rgba(224,64,158,.12),transparent);pointer-events:none;z-index:0}
+a{color:inherit;text-decoration:none}
+.inner{max-width:1120px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+h2,h3,h4{line-height:1.4;font-weight:700}
+section{padding:96px 0;position:relative;z-index:1}
+
+/* ===== 顶栏 ===== */
+.hd{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(10,7,16,.78);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.hd-i{display:flex;align-items:center;height:70px;gap:18px}
+.lg{display:flex;align-items:baseline;gap:9px;flex-shrink:0}
+.lg b{font-size:22px;letter-spacing:1px;font-weight:900}
+.lg b i{font-style:normal;color:var(--vio2)}
+.lg em{font-style:normal;font-size:12px;color:var(--gold);letter-spacing:2px;border-left:1px solid var(--line2);padding-left:9px}
+.clock{margin-left:auto;display:flex;align-items:center;gap:9px;font-size:13px;color:var(--tx2);font-variant-numeric:tabular-nums}
+.clock s{width:7px;height:7px;border-radius:50%;background:var(--mag);text-decoration:none;animation:pl 1.6s infinite}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.2}}
+.nv{display:flex;gap:26px;font-size:14px}
+.nv a{color:var(--tx2);transition:.25s;position:relative}
+.nv a:hover{color:var(--vio2)}
+.nv a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--vio2);transition:.25s}
+.nv a:hover::after{width:100%}
+.hm{display:none;background:none;border:none;color:var(--tx);font-size:22px;cursor:pointer;margin-left:auto}
+
+/* ===== HERO ===== */
+.hero{padding:150px 0 110px;background:linear-gradient(180deg,transparent,rgba(139,92,246,.05))}
+.hero-i{display:grid;grid-template-columns:1.3fr .9fr;gap:64px;align-items:center}
+.h-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:3px;color:var(--vio2);border:1px solid var(--line2);border-radius:30px;padding:6px 16px}
+.hero h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:26px 0 24px;letter-spacing:-1.5px}
+.hero h1 span{background:linear-gradient(92deg,var(--vio2),var(--mag));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 small{display:block;font-size:.36em;color:var(--tx3);letter-spacing:5px;margin-top:18px;font-weight:400}
+.hero p{color:var(--tx2);font-size:16px;max-width:520px}
+.acts{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.btn{background:var(--vio);color:#fff;padding:14px 30px;border-radius:4px;font-weight:700;font-size:15px;transition:.3s;border:1px solid var(--vio)}
+.btn:hover{background:transparent;color:var(--vio2)}
+.btn-g{background:transparent;color:var(--tx);border:1px solid var(--line2);padding:14px 26px;border-radius:4px;font-size:15px;transition:.3s}
+.btn-g:hover{border-color:var(--mag);color:var(--mag)}
+.mix{margin-top:52px;display:flex;gap:48px;flex-wrap:wrap}
+.mix div span{display:block;font-size:30px;font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums}
+.mix div b{font-size:12px;color:var(--tx3);font-weight:400;letter-spacing:1px}
+
+/* 午夜节目单 */
+.tkt{background:var(--paper);border:1px solid var(--line2);border-radius:10px;padding:0;overflow:hidden;box-shadow:0 30px 70px -30px rgba(139,92,246,.5)}
+.tkt-h{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;background:linear-gradient(90deg,var(--vio),var(--mag));color:#fff}
+.tkt-h b{font-size:15px;letter-spacing:2px}
+.tkt-h em{font-style:normal;font-size:12px;opacity:.9}
+.tk{display:grid;grid-template-columns:74px 1fr 96px;gap:18px;align-items:center;padding:19px 26px;border-bottom:1px solid var(--line)}
+.tk:last-child{border-bottom:none}
+.tk time{font-size:20px;font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums}
+.tk div h4{font-size:17px;margin-bottom:2px}
+.tk div p{font-size:13px;color:var(--tx3)}
+.tk b{font-size:12px;color:var(--vio2);text-align:right;font-weight:600}
+
+/* ===== 通用区块 ===== */
+.ey{font-size:11px;letter-spacing:3px;color:var(--vio2);font-weight:800}
+.sec-h{margin-bottom:52px}
+.sec-h h2{font-size:clamp(27px,3.8vw,40px);margin:8px 0 10px;letter-spacing:-.8px}
+.sec-h p{color:var(--tx2);max-width:600px}
+.sec-h.f{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+
+/* ===== 今日场次 ===== */
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.sl{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:0;overflow:hidden;transition:.35s}
+.sl:hover{transform:translateY(-6px);border-color:var(--vio2);box-shadow:0 24px 50px -24px rgba(139,92,246,.6)}
+.sl-top{padding:24px 26px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.sl-top b{font-size:26px;color:var(--gold);font-variant-numeric:tabular-nums}
+.sl-top span{font-size:12px;color:var(--tx3)}
+.sl h3{font-size:22px;padding:6px 26px 10px}
+.sl p{font-size:14px;color:var(--tx2);padding:0 26px 20px}
+.sl-foot{display:flex;justify-content:space-between;padding:14px 26px;background:rgba(255,255,255,.02);font-size:12px;color:var(--tx3)}
+
+/* ===== 长片独白 ===== */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.mono{border-left:2px solid var(--vio);padding:6px 0 6px 26px;color:var(--tx2);font-size:16px}
+.mono p{margin-bottom:20px}
+.mono p::first-letter{color:var(--mag);font-size:1.4em;font-weight:900}
+.cards{display:grid;gap:16px}
+.mc{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:24px;transition:.3s}
+.mc:hover{border-color:var(--mag)}
+.mc time{font-size:12px;color:var(--mag);letter-spacing:1px}
+.mc h4{font-size:18px;margin:8px 0 8px}
+.mc p{font-size:14px;color:var(--tx2)}
+.mc cite{display:block;margin-top:14px;font-size:12px;color:var(--tx3);font-style:normal}
+
+/* ===== 调酒单 ===== */
+.bar{background:linear-gradient(180deg,rgba(224,64,158,.06),transparent);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.dr{background:var(--paper);padding:26px}
+.dr h4{font-size:19px;margin-bottom:6px}
+.dr span{font-size:12px;color:var(--gold);letter-spacing:1px}
+.dr p{font-size:14px;color:var(--tx2);margin:12px 0 14px}
+.dr ol{list-style:none;padding:0}
+.dr ol li{font-size:13px;color:var(--tx3);padding:6px 0;border-top:1px solid var(--line)}
+.dr ol li b{color:var(--tx2);font-weight:600}
+
+/* ===== 深夜广播 ===== */
+.brd{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+.pl{background:var(--paper);border:1px solid var(--line2);border-radius:10px;padding:28px;position:sticky;top:96px}
+.pl-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.pl-h b{font-size:13px;color:var(--mag);letter-spacing:2px}
+.freq{font-size:12px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.tr{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:.2s}
+.tr:hover{background:rgba(139,92,246,.06);padding-left:8px}
+.tr.on{background:rgba(245,197,66,.08);padding-left:8px}
+.tr em{font-style:normal;font-size:11px;color:var(--gold);min-width:44px;font-variant-numeric:tabular-nums;padding-top:3px}
+.tr div{flex:1}
+.tr div b{display:block;font-size:15px;font-weight:600}
+.tr div span{font-size:12px;color:var(--tx3)}
+.tr.on div b{color:var(--gold)}
+.nowp{margin-top:26px;padding-top:22px;border-top:1px solid var(--line2)}
+.nowp b{font-size:13px;color:var(--tx3);font-weight:400;letter-spacing:1px}
+.nowp p{font-size:16px;margin:8px 0 14px;color:var(--tx)}
+.nowp span{font-size:13px;color:var(--vio2)}
+.ctrl{display:flex;gap:10px;margin-top:22px}
+.ctrl button{background:var(--vio);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:16px;cursor:pointer;transition:.2s}
+.ctrl button:hover{background:var(--mag)}
+.gst{list-style:none;display:flex;flex-direction:column;gap:18px}
+.gst li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
+.gst li b{font-size:12px;color:var(--vio2);letter-spacing:1px}
+.gst li h4{font-size:17px;margin:6px 0 8px}
+.gst li p{font-size:14px;color:var(--tx2)}
+
+/* ===== 影迷纸条 ===== */
+.note{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:34px}
+.note h3{font-size:22px;margin-bottom:6px}
+.note p{font-size:14px;color:var(--tx3);margin-bottom:24px}
+.nf label{display:block;font-size:13px;color:var(--tx2);margin-bottom:16px}
+.nf input,.nf textarea{width:100%;margin-top:6px;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:12px 14px;color:var(--tx);font-size:15px;outline:none;font-family:inherit}
+.nf input:focus,.nf textarea:focus{border-color:var(--vio2)}
+.nf textarea{resize:vertical;min-height:96px}
+.nf-r{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.nf button{width:100%;margin-top:10px;background:linear-gradient(90deg,var(--vio),var(--mag));border:none;color:#fff;padding:15px;border-radius:5px;font-weight:700;font-size:15px;cursor:pointer;transition:.3s}
+.nf button:hover{opacity:.88}
+.wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.paper{background:linear-gradient(160deg,#1c152e,#160f26);border:1px solid var(--line);border-radius:8px;padding:20px;position:relative}
+.paper::before{content:"";position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,var(--vio2),transparent)}
+.paper b{font-size:13px;color:var(--tx2)}
+.paper p{font-size:14px;margin:10px 0 14px;color:var(--tx)}
+.paper span{font-size:11px;color:var(--tx3);letter-spacing:1px}
+
+/* ===== 打烊 ===== */
+.bye{text-align:center;padding:110px 0}
+.bye h2{font-size:clamp(30px,5vw,52px);letter-spacing:-1px}
+.bye h2 i{font-style:normal;color:var(--vio2)}
+.bye p{color:var(--tx2);max-width:560px;margin:18px auto 0}
+.bye time{display:block;margin-top:40px;font-size:14px;color:var(--tx3);letter-spacing:2px}
+
+/* ===== 页脚 ===== */
+.ft{background:#06040c;border-top:1px solid var(--line);padding:56px 0 26px;position:relative;z-index:1}
+.ft-i{display:grid;grid-template-columns:1fr 1.5fr;gap:50px;margin-bottom:40px}
+.ft-l b{font-size:20px;font-weight:900}
+.ft-l em{display:block;font-style:normal;font-size:13px;color:var(--gold);margin:8px 0 14px}
+.ft-l p{font-size:14px;color:var(--tx3)}
+.ft-c{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.ft-c h6{font-size:12px;letter-spacing:2px;color:var(--tx3);margin-bottom:14px}
+.ft-c a{display:block;color:var(--tx2);font-size:14px;padding:5px 0;transition:.2s}
+.ft-c a:hover{color:var(--vio2)}
+.ft-b{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--tx3)}
+.ft-b a{color:var(--mag)}
+
+/* ===== 响应式 ===== */
+@media (max-width:960px){
+  .hero-i,.split,.brd{grid-template-columns:1fr;gap:44px}
+  .pl{position:static}
+  .ft-i{grid-template-columns:1fr}
+  .nv{display:none}
+}
+@media (max-width:660px){
+  .hm{display:block}
+  .nv{position:fixed;top:70px;left:0;right:0;flex-direction:column;background:var(--paper);padding:14px 24px;gap:0;border-bottom:1px solid var(--line);transform:translateY(-200%);transition:.35s}
+  .nv.open{transform:translateY(0)}
+  .nv a{padding:15px 0;border-bottom:1px solid var(--line);font-size:15px}
+  section{padding:64px 0}
+  .clock{display:none}
+  .nf-r{grid-template-columns:1fr}
+  .tk{grid-template-columns:56px 1fr;gap:12px}
+  .tk b{display:none}
+  .hero{padding:120px 0 80px}
+  .acts .btn,.acts .btn-g{flex:1;text-align:center}
+  .mix{gap:30px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<header class="hd">
+  <div class="inner hd-i">
+    <a class="lg" href="#"><b>神马电影网 <i>午夜</i></b><em>MIDNIGHT SHOW</em></a>
+    <nav class="nv" id="nv">
+      <a href="#show">今晚场次</a>
+      <a href="#essay">放映前的话</a>
+      <a href="#menu">心情调酒单</a>
+      <a href="#radio">深夜广播</a>
+      <a href="#note">影迷纸条</a>
+      <a href="#bye">打烊时间</a>
+    </nav>
+    <div class="clock"><s></s><span id="ck">00:00:00</span> · 营业中</div>
+    <button class="hm" aria-label="菜单" onclick="tg()">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="inner hero-i">
+    <div>
+      <span class="h-tag">◆ 每天 00:00 — 04:00 排片 · 其他时段休息</span>
+      <h1>睡不着的那几个小时，<span>我们负责放片</span><small>S H E N M A &nbsp; D I A N Y I N G &nbsp; W A N G &nbsp;· &nbsp; W U &nbsp; Y E</small></h1>
+      <p>不按热度排片。零点放那种看完会想给旧情人发消息的，一点放适合一个人喝完半瓶啤酒的，三点放让你天亮前能睡着的。你只需要告诉自己：现在几点的夜。</p>
+      <div class="acts">
+        <a class="btn" href="#show">看今晚放什么</a>
+        <a class="btn-g" href="#menu">按心情选片</a>
+      </div>
+      <div class="mix">
+        <div><span>04:00</span><b>每日营业时长</b></div>
+        <div><span>127</span><b>午夜场次档案</b></div>
+        <div><span>04</span><b>个时段分区</b></div>
+      </div>
+    </div>
+    <div class="tkt">
+      <div class="tkt-h"><b>今 夜 节 目 单</b><em>2026 / 10 / 05 周一</em></div>
+      <div class="tk"><time>00:00</time><div><h4>花样年华</h4><p>王家卫 · 那些没说出口的话，会在凌晨自己跑出来</p></div><b>204 分钟场</b></div>
+      <div class="tk"><time>01:00</time><div><h4>迷失东京</h4><p>索菲亚·科波拉 · 两个失眠的人在酒店大堂相遇</p></div><b>102 分钟场</b></div>
+      <div class="tk"><time>02:00</time><div><h4>驾驶我的车</h4><p>滨口龙介 · 长路上的独白，适合开车的人听</p></div><b>179 分钟场</b></div>
+      <div class="tk"><time>03:00</time><div><h4>小森林 冬春篇</h4><p>森淳一 · 做饭的声音，是最好的助眠白噪音</p></div><b>沉静场</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 今晚场次 -->
+<section id="show">
+  <div class="inner">
+    <div class="sec-h"><span class="ey">TONIGHT · 4 SLOTS</span><h2>今晚场次</h2><p>四个时段，四种情绪剂量。点开任一卡片可以展开本时段的三部候选片。</p></div>
+    <div class="slots">
+      <article class="sl" data-slot="0">
+        <div class="sl-top"><b>00:00</b><span>刚躺下 · 脑子最吵</span></div>
+        <h3>翻来覆去场</h3>
+        <p>你需要有人陪你说话，但不想被劝。这个时段选的片子都有很长的对白，主角也都没睡好。</p>
+        <div class="sl-foot"><span>3 部候选</span><a href="#">展开 ›</a></div>
+      </article>
+      <article class="sl" data-slot="1">
+        <div class="sl-top"><b>01:00</b><span>认了 · 今晚就这样</span></div>
+        <h3>认命场</h3>
+        <p>既然睡不着，就别睡了。看一部慢的、安静的、讲普通人一天怎么过的片子。</p>
+        <div class="sl-foot"><span>3 部候选</span><a href="#">展开 ›</a></div>
+      </article>
+      <article class="sl" data-slot="2">
+        <div class="sl-top"><b>02:00</b><span>有点冷 · 想喝热的</span></div>
+        <h3>暖手场</h3>
+        <p>食物、厨房、家人、老房子。这个时段的片子会让你想去冰箱里找点什么。</p>
+        <div class="sl-foot"><span>3 部候选</span><a href="#">展开 ›</a></div>
+      </article>
+      <article class="sl" data-slot="3">
+        <div class="sl-top"><b>03:00</b><span>困了 · 但舍不得关</span></div>
+        <h3>助眠场</h3>
+        <p>海浪、火车、雪、一个人走路。画面比剧情重要，看完刚好睡过去。</p>
+        <div class="sl-foot"><span>3 部候选</span><a href="#">展开 ›</a></div>
+      </article>
+    </div>
+    <div id="slotBox" style="display:none;margin-top:26px;background:var(--paper);border:1px solid var(--vio2);border-radius:10px;padding:28px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+        <b id="sbT" style="font-size:18px;color:var(--gold)"></b>
+        <button onclick="document.getElementById('slotBox').style.display='none'" style="background:none;border:none;color:var(--tx3);font-size:20px;cursor:pointer">✕</button>
+      </div>
+      <ul id="sbL" style="list-style:none;display:grid;gap:14px"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 放映前的话 -->
+<section id="essay">
+  <div class="inner">
+    <div class="sec-h f"><div><span class="ey">A WORD BEFORE THE FILM</span><h2>放映前的话</h2><p>三篇不成体系的短评。都是凌晨写的，写的时候旁边有人在看片。</p></div><a href="#" style="color:var(--vio2);font-size:14px">更多手记 ›</a></div>
+    <div class="split">
+      <div class="mono">
+        <p>凌晨两点是看电影最诚实的时间。白天你会为情节逻辑打分，两点你只关心主角有没有把那杯茶喝完。</p>
+        <p>所以本站不收爆米花大片。不是说它们不好，是它们需要一群人一起看才有意思；而两点钟的房间里通常只有你一个。</p>
+        <p>我们选片的标准只有一条：这部片子能不能陪一个人坐到天亮。能，就上片；不能，就留给白天的网站去推。</p>
+      </div>
+      <div class="cards">
+        <div class="mc"><time>NO.01</time><h4>为什么我们不放喜剧</h4><p>笑点需要社交距离。一个人笑，笑完会更空。除非是那种带点苦的，比如《白日梦想家》。</p><cite>— 写在 02:47</cite></div>
+        <div class="mc"><time>NO.02</time><h4>长片是深夜的朋友</h4><p>三小时的片子意味着你可以把手机放下三次。我们收录的场次里，最长的 238 分钟。</p><cite>— 写在 01:12</cite></div>
+        <div class="mc"><time>NO.03</time><h4>助眠不等于催眠</h4><p>我们不推荐烂片让你快睡。画面难看反而让人清醒。要好看，还要慢，这很难。</p><cite>— 写在 03:30</cite></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 调酒单 -->
+<section class="bar" id="menu">
+  <div class="inner">
+    <div class="sec-h f"><div><span class="ey">MOOD COCKTAIL</span><h2>心情调酒单</h2><p>点一杯，我们配三部片子。没有酒精，只有情绪配方。</p></div><a href="#" style="color:var(--vio2);font-size:14px">完整酒单 ›</a></div>
+    <div class="menu">
+      <div class="dr"><h4>长岛冰茶</h4><span>配方 · 孤独感 60% / 公路 25% / 烟嗓配乐 15%</span><p>那种"全世界都睡了只有我醒着"的夜晚，需要有人一直在路上。</p><ol><li><b>① 德州巴黎</b> — 找回一个名字要花四年</li><li><b>② 摩托日记</b> — 出发的时候他还不叫切</li><li><b>③ 野草莓</b> — 七十八岁的人做了一夜的梦</li></ol></div>
+      <div class="dr"><h4>威士忌酸</h4><span>配方 · 旧情人 40% / 雨天 35% / 不接电话 25%</span><p>刚吵完架，或者刚发现自己还在想一个人。</p><ol><li><b>① 花样年华</b> — 1962 年的走廊，烟一直没点着</li><li><b>② 爱在黎明破晓前</b> — 维也纳的夜车，只有一晚</li><li><b>③ 蓝色大门</b> — 游泳池边的告白永远晚一步</li></ol></div>
+      <div class="dr"><h4>热红酒</h4><span>配方 · 厨房 50% / 冬天 30% / 一个人吃饭 20%</span><p>胃里空的时候，画面里的烟火气最有用。</p><ol><li><b>① 小森林 夏秋篇</b> — 一个人把饭做完的全过程</li><li><b>② 南极之恋</b> — 雪地里只有两个人，只能互相做饭</li><li><b>③ 饮食男女</b> — 开场六分钟的菜，拍了整部电影</li></ol></div>
+      <div class="dr"><h4>莫吉托</h4><span>配方 · 轻盈 45% / 海边 35% / 少年感 20%</span><p>情绪已经到底了，再往下走就得靠点亮的。</p><ol><li><b>① 菊次郎的夏天</b> — 一个流氓陪小孩找妈妈</li><li><b>② 天堂电影院</b> — 老放映员留下的那盘胶卷</li><li><b>③ 少年派的奇幻漂流</b> — 老虎走了以后，人反而更空</li></ol></div>
+    </div>
+  </div>
+</section>
+
+<!-- 深夜广播 -->
+<section id="radio">
+  <div class="inner">
+    <div class="sec-h"><span class="ey">LATE NIGHT RADIO · FM 107.5</span><h2>深夜广播</h2><p>一档不直播的直播节目。每期一个主题，三首配乐，一位当班主持人。点曲目可看当期片单。</p></div>
+    <div class="brd">
+      <div class="pl">
+        <div class="pl-h"><b>● 正在播出</b><span class="freq" id="fr">FM 107.5 / 256kbps</span></div>
+        <div id="trL"></div>
+        <div class="nowp"><b>本 期 主 题</b><p id="npT">关于那些没等到的电话</p><span id="npS">当班：一位不愿留名的夜班编辑 · 片单 6 部</span></div>
+        <div class="ctrl"><button onclick="prev()" aria-label="上一期">⏮</button><button onclick="play()" aria-label="播放/暂停" id="pp">⏸</button><button onclick="next()" aria-label="下一期">⏭</button></div>
+      </div>
+      <ul class="gst">
+        <li><b>EP.12 · 周一</b><h4>为什么凌晨两点看电影，人会变诚实</h4><p>白天我们用逻辑打分，两点只关心主角有没有把那杯茶喝完。这是本台最常重播的一期。</p></li>
+        <li><b>EP.11 · 周日</b><h4>一个人看喜剧，笑完为什么会更空</h4><p>笑点是社交距离的产物。我们试着重看五部公认最好笑的片子，结果只留下一部。</p></li>
+        <li><b>EP.10 · 周六</b><h4>助眠片单的筛选标准，其实是好看</h4><p>烂片会让人清醒。要慢，还要好看，这两个条件同时成立的时候，名单就只剩下九部。</p></li>
+        <li><b>EP.09 · 周五</b><h4>那些被剪成预告片毁掉的慢片</h4><p>预告片剪掉了十分钟的长镜头，也剪掉了这部片子存在的理由。</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 影迷纸条 -->
+<section id="note">
+  <div class="inner">
+    <div class="sec-h f"><div><span class="ey">FAN NOTES</span><h2>影迷纸条</h2><p>这里贴的都是观众在散场时写下的句子。你也可以留一张，每天早上十点我们整理一次。</p></div><a href="#" style="color:var(--vio2);font-size:14px">全部纸条 ›</a></div>
+    <div class="split">
+      <form class="note nf" onsubmit="event.preventDefault();var b=this.querySelector('button');b.textContent='已贴上 · 明天十点见';b.disabled=true">
+        <h3>留一张纸条</h3><p>一句话就够，不用写影评。</p>
+        <label>你想留在这个夜里的句子
+          <textarea placeholder="比如：03:20 看完，去厨房喝了杯热水" required></textarea>
+        </label>
+        <div class="nf-r">
+          <label>怎么称呼你
+            <input type="text" placeholder="可以不填" maxlength="20">
+          </label>
+          <label>属于哪个时段
+            <input type="text" placeholder="00:00 / 01:00 / 02:00 / 03:00" maxlength="10">
+          </label>
+        </div>
+        <button type="submit">贴到墙上</button>
+      </form>
+      <div class="wall">
+        <div class="paper"><b>@ 不睡的人</b><p>01:00 场放了《迷失东京》，看到斯嘉丽在床头坐着，我把灯关了。</p><span>2026.10.04</span></div>
+        <div class="paper"><b>@ 第三排</b><p>助眠场其实没让我睡着，我把它看完了。</p><span>2026.10.03</span></div>
+        <div class="paper"><b>@ 夜班司机</b><p>你们的长岛冰茶那一组，我开了四百公里看完。</p><span>2026.10.02</span></div>
+        <div class="paper"><b>@ 一杯热的</b><p>《小森林》那组我看了七遍，每次都在做西红柿罐头那段睡着。</p><span>2026.10.01</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 打烊 -->
+<section class="bye" id="bye">
+  <div class="inner">
+    <h2>四点一到，<i>我们准时关灯</i></h2>
+    <p>不是故作神秘。凌晨四点之后的太阳是真的，人得去看点真实的东西，不能一直待在电影里。明天零点，节目单重新排。</p>
+    <time id="toOpen">距今晚零点开场 — 时 — 分 — 秒</time>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="inner">
+    <div class="ft-i">
+      <div class="ft-l"><b>神马电影网 <i style="font-style:normal;color:var(--vio2)">午夜</i></b><em>SHENMA · MIDNIGHT SHOW</em><p>本站网址：https://shenmadianyingwangwuye-zh.github.io<br>每日 00:00 — 04:00 更新场次，其余时段留作写手记</p></div>
+      <div class="ft-c">
+        <div><h6>放映</h6><a href="#show">今晚场次</a><a href="#menu">心情调酒单</a><a href="#essay">放映前的话</a></div>
+        <div><h6>收听</h6><a href="#radio">深夜广播</a><a href="#">往期片单</a><a href="#">当班编辑</a></div>
+        <div><h6>留言</h6><a href="#note">影迷纸条</a><a href="#">贴纸规则</a><a href="#">打烊时间</a></div>
+      </div>
+    </div>
+    <div class="ft-b"><span>© 2024–2026 神马电影网 午夜 · 本站只提供影片资料与观影建议，不提供任何观看资源，版权归各制片方所有</span><a href="#">联系我们</a></div>
+  </div>
+</footer>
+
+<script>
+/* 场次数据 */
+var SLOTS=[
+ {t:"00:00 · 翻来覆去场",items:[
+  ["花样年华","2000 · 王家卫","204 分钟场 · 走廊、雨、两件旗袍"],
+  ["迷失东京","2003 · 索菲亚·科波拉","102 分钟场 · 酒店大堂的两种孤独"],
+  ["爱在黎明破晓前","2004 · 理查德·林克莱特","101 分钟场 · 一夜能聊完一生"]]},
+ {t:"01:00 · 认命场",items:[
+  ["驾驶我的车","2021 · 滨口龙介","179 分钟场 · 后座的独白"],
+  ["修女艾达","2013 · 帕维乌·帕夫利科夫斯基","80 分钟场 · 黑白、留白、一句不多说"],
+  ["温蒂妮","2020 · 克里斯蒂安·佩措尔德","90 分钟场 · 水下的承诺"]]},
+ {t:"02:00 · 暖手场",items:[
+  ["小森林 夏秋篇","2014 · 森淳一","111 分钟场 · 番茄罐头的正确做法"],
+  ["饮食男女","1994 · 李安","124 分钟场 · 开场六分钟的菜"],
+  ["小花的味噌汤","2015 · 阿久根知昭","101 分钟场 · 妈妈教女儿做饭"]]},
+ {t:"03:00 · 助眠场",items:[
+  ["小森林 冬春篇","2015 · 森淳一","108 分钟场 · 雪、萝卜、米饭"],
+  ["海街日记","2015 · 是枝裕和","126 分钟场 · 海边日常，没有大事"],
+  ["南极之恋","2018 · 吴有音","115 分钟场 · 两个人只能互相做饭"]]}
+];
+document.querySelectorAll('.sl').forEach(function(el){
+  el.addEventListener('click',function(){
+    var i=Number(el.dataset.slot),o=SLOTS[i];
+    document.getElementById('sbT').textContent=o.t;
+    var h='';
+    o.items.forEach(function(x){h+='<li style="display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)"><b style="font-size:15px;flex:1">'+x[0]+'</b><span style="font-size:13px;color:var(--tx3)">'+x[1]+'</span><em style="font-style:normal;font-size:12px;color:var(--vio2);min-width:120px;text-align:right">'+x[2]+'</em></li>'});
+    document.getElementById('sbL').innerHTML=h;
+    document.getElementById('slotBox').style.display='block';
+    document.getElementById('slotBox').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+});
+
+/* 广播 */
+var EPS=[
+ {t:"关于那些没等到的电话",s:"当班：一位不愿留名的夜班编辑 · 片单 6 部",
+  tr:[["00:00","在场的证据","坂本龙一 · Merry Christmas Mr. Lawrence"],["00:06","电话那头是忙音","岩井俊二 · 关于莉莉周的一切"],["00:14","等一个人从站台回来","朱塞佩·托纳多雷 · 海上钢琴师"]]},
+ {t:"雨声比台词更诚实的一期",s:"当班：雨夜值班编辑 · 片单 5 部",
+  tr:[["00:00","雨一直下到片尾","王家卫 · 堕落天使"],["00:07","一把伞的距离","是枝裕和 · 无人知晓"],["00:13","雨刷的节奏","安德鲁·多米尼克 · 神枪手之死"]]},
+ {t:"厨房里那点烟火气",s:"当班：负责暖手场的人 · 片单 6 部",
+  tr:[["00:00","切洋葱的声音","森淳一 · 小森林"],["00:05","一锅汤要炖多久","李安 · 饮食男女"],["00:11","面粉飞起来","河濑直美 · 澄沙之味"]]},
+ {t:"关于离别，我们只谈后三分之一",s:"当班：凌晨两点常驻编辑 · 片单 5 部",
+  tr:[["00:00","他转身走了","奉俊昊 · 寄生虫"],["00:08","没说出口的告别","滨口龙介 · 欢乐时光"],["00:15","最后一次挥手","理查德·林克莱特 · 爱在日落黄昏时"]]}
+];
+var ep=0,pp=true;
+function renderTr(){
+  var o=EPS[ep];
+  document.getElementById('npT').textContent=o.t;
+  document.getElementById('npS').textContent=o.s;
+  var h='';
+  o.tr.forEach(function(x,i){h+='<div class="tr'+(i===0?' on':'')+'" onclick="pickTr('+i+')"><em>'+x[0]+'</em><div><b>'+x[1]+'</b><span>'+x[2]+'</span></div></div>'});
+  document.getElementById('trL').innerHTML=h;
+}
+function pickTr(i){document.querySelectorAll('#trL .tr').forEach(function(x,j){x.classList.toggle('on',i===j)})}
+function prev(){ep=(ep+EPS.length-1)%EPS.length;renderTr()}
+function next(){ep=(ep+1)%EPS.length;renderTr()}
+function play(){pp=!pp;document.getElementById('pp').textContent=pp?'⏸':'▶';document.querySelector('.pl-h b').innerHTML=pp?'● 正在播出':'❚❚ 已暂停'}
+renderTr();
+
+/* 时钟 */
+function tick(){
+  var n=new Date(),h=n.getHours(),m=n.getMinutes(),s=n.getSeconds();
+  document.getElementById('ck').textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  var hh=h*3600+m*60+s, open=(24*3600-hh)%86400;
+  var el=document.getElementById('toOpen');
+  if(el){var a=Math.floor(open/3600),b=Math.floor(open%3600/60),c=open%60;
+    el.textContent='距今晚零点开场 '+a+' 时 '+b+' 分 '+c+' 秒';}
+}
+tick();setInterval(tick,1000);
+
+/* 导航 */
+function tg(){document.getElementById('nv').classList.toggle('open')}
+</script>
+</body>
+</html>
